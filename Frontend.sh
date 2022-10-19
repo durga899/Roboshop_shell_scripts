@@ -1,8 +1,10 @@
  echo Installing Nginx
- yum install nginx -y &>>/tmp/frontend
+ yum install ngiinx -y &>>/tmp/frontend
  if [ $? -eq 0 ]
  then
    echo Nginx installed successfully
+ else
+   echo Nginx installation failed
  fi
 
  systemctl enable nginx
