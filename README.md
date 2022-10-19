@@ -1,2 +1,4 @@
-# Roboshop_shell_scripts
-## Shell scripts for RoboShop Project
+# Learning shell commands
+1. comment
+2. print
+
