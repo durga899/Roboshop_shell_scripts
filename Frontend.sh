@@ -1,7 +1,6 @@
  echo Installing Nginx
  yum install nginx -y &>>/tmp/frontend
- echo status = $?
- if [ status -eq 0 ]
+ if [ $? -eq 0 ]
  then
    echo Nginx installed successfully
  fi
