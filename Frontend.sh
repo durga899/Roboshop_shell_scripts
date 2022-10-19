@@ -3,8 +3,6 @@
  echo status = $?
  if [ status -eq 0] then
    echo Nginx installed successfully
- else
-   echo Installation failed
  fi
 
  systemctl enable nginx
