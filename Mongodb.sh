@@ -22,6 +22,10 @@ echo status = $?
 cd /tmp
 unzip mongodb.zip &>>LOG_FILE
 cd mongodb-main
-mongo < catalogue.js
-mongo < users.js
+
+echo Installing Dependecies
+mongo < catalogue.js  &>>LOG_FILE
+echo status = $?
+mongo < users.js  &>>LOG_FILE
+echo status = $?
 
