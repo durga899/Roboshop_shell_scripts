@@ -27,7 +27,10 @@ echo Installing npm
 npm install &>>LOG_FILE
 echo status = $?
 
+echo Setup Catalogue service
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+echo status = $?
+
 systemctl daemon-reload  &>>LOG_FILE
 systemctl start catalogue
 systemctl enable catalogue
