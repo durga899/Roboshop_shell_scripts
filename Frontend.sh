@@ -1,5 +1,5 @@
  echo Installing Nginx
- yum install ngiinx -y &>>/tmp/frontend
+ yum install nginx -y &>>/tmp/frontend
  if [ $? -eq 0 ]
  then
    echo Nginx installed successfully
