@@ -18,6 +18,6 @@ echo status = $?
 cd /tmp
 unzip mongodb.zip &>>LOG_FILE
 cd mongodb-main
-mongo < catalogue.js
-mongo < users.js
+mongo < catalogue.js &>>LOG_FILE
+mongo < users.js &>>LOG_FILE
 
