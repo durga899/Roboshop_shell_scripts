@@ -7,9 +7,14 @@ echo Installing mongodb
 yum install -y mongodb-org &>>LOG_FILE
 echo status = $?
 
+
+echo Editing mongo file
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+echo status = $?
+
 echo Starting mongodb
-systemctl enable mongod
-systemctl start mongod
+systemctl enable mongod &>>LOG_FILE
+systemctl start mongod &>>LOG_FILE
 
 echo Editing mongo file
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
@@ -25,9 +30,13 @@ cd /tmp
 unzip mongodb.zip &>>LOG_FILE
 cd mongodb-main
 
-echo Installing Dependecies
+echo Load Catalouge service
 mongo < catalogue.js  &>>LOG_FILE
 echo status = $?
+
+echo Load User service schema
 mongo < users.js  &>>LOG_FILE
 echo status = $?
+
+
 
