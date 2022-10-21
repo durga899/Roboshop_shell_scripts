@@ -9,6 +9,7 @@ echo status = $?
 
 echo Adding roboshop user
 useradd roboshop &>>LOG_FILE
+echo status = $?
 
 echo Downloading catalogue application code
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>LOG_FILE
