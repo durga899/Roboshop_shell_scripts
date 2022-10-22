@@ -51,6 +51,16 @@ else
 fi
 
 cd /home/roboshop
+echo Cleaning old content
+rm -rf catalogue &>>LOG_FILE
+if [ $? -eq 0 ]; then
+  echo Status = success
+else
+  echo status = failure
+  exit 1
+fi
+
+
 echo Extract catalogue
 unzip /tmp/catalogue.zip &>>LOG_FILE
 if [ $? -eq 0 ]; then
