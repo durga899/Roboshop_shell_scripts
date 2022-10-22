@@ -45,6 +45,7 @@ if [ $? -eq 0 ]; then
   StatusCheck $?
 fi
 
+cd /tmp
 echo Unzipping mongodb
 unzip mongodb.zip &>>LOG_FILE
 StatusCheck $?
