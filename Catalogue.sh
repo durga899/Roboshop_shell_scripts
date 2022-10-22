@@ -25,7 +25,7 @@ fi
 
 echo Adding roboshop user
 USERID=$(id roboshop)
-if [ USERID -eq 0 ]; then
+if [ $USERID -eq 0 ]; then
   echo User already exists
 else
   useradd roboshop &>>LOG_FILE
