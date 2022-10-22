@@ -24,11 +24,18 @@ else
 fi
 
 echo Adding roboshop user
-USERID=$(id roboshop)
-if [ $USERID -eq 0 ]; then
+USID=$(id roboshop)
+if [ $USID -eq 0 ]; then
   echo User already exists
 else
   useradd roboshop &>>LOG_FILE
+fi
+
+if [ $? -eq 0 ]; then
+  echo Status = success
+else
+  echo status = failure
+  exit 1
 fi
 
 
