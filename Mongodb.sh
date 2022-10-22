@@ -38,6 +38,7 @@ echo Removing mongodb-main file
 cd mongodb-main &>>LOG_FILE
 if [ $? -eq 0 ]; then
   rm -rf mongodb-main &>>LOG_FILE
+  rm -rf mongodb.zip &>>LOG_FILE
   StatusCheck $?
 fi
 
