@@ -31,12 +31,6 @@ else
   useradd roboshop &>>LOG_FILE
 fi
 
-if [ $? -eq 0 ]; then
-  echo Status = success
-else
-  echo status = failure
-  exit 1
-fi
 
 
 echo Downloading catalogue application code
