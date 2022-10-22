@@ -6,14 +6,7 @@ if [ $ID -ne 0 ]; then
   exit 1
 fi
 
-StatusCheck(){
-  if [ $1 -eq 0 ]; then
-    echo -e Status = "\e[32msuccess\e[0m"
-  else
-    echo -e status = "\e31mfailure\e[0m"
-    exit 1
-  fi
-}
+source common.sh
 
 echo Getting Mongodb repo
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>LOG_FILE
@@ -33,19 +26,13 @@ systemctl enable mongod &>>LOG_FILE
 systemctl restart mongod &>>LOG_FILE
 StatusCheck $?
 
-cd /tmp
-echo Removing mongodb-main file
-rm -rf mongodb-main &>>LOG_FILE
-StatusCheck $?
-
-
 echo Downloading mongodb schema
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"  &>>LOG_FILE
 StatusCheck $?
 
 cd /tmp
 echo Unzipping mongodb
-unzip mongodb.zip &>>LOG_FILE
+unzip -o mongodb.zip &>>LOG_FILE
 StatusCheck $?
 
 cd mongodb-main
