@@ -17,9 +17,9 @@ fi
 echo Install nodejs
 yum install nodejs -y &>>LOG_FILE
 if [ $? -eq 0 ]; then
-  echo Status = success
+  echo -e Status = "\e[32msuccess\e[0m"
 else
-  echo status = failure
+  echo -e status = "\e31mfailure\e[0m"
   exit 1
 fi
 
@@ -30,9 +30,9 @@ if [ $? -eq 0 ]; then
 else
   useradd roboshop &>>LOG_FILE
   if [ $? -eq 0 ]; then
-    echo Status = success
+    echo -e Status = "\e[32msuccess\e[0m"
   else
-    echo status = failure
+    echo -e status = "\e31mfailure\e[0m"
     exit 1
   fi
 fi
@@ -44,9 +44,9 @@ fi
 echo Downloading catalogue application code
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>LOG_FILE
 if [ $? -eq 0 ]; then
-  echo Status = success
+  echo -e Status = "\e[32msuccess\e[0m"
 else
-  echo status = failure
+  echo -e status = "\e31mfailure\e[0m"
   exit 1
 fi
 
@@ -54,9 +54,9 @@ cd /home/roboshop
 echo Cleaning old content
 rm -rf catalogue &>>LOG_FILE
 if [ $? -eq 0 ]; then
-  echo Status = success
+  echo -e Status = "\e[32msuccess\e[0m"
 else
-  echo status = failure
+  echo -e status = "\e31mfailure\e[0m"
   exit 1
 fi
 
@@ -64,36 +64,36 @@ fi
 echo Extract catalogue
 unzip /tmp/catalogue.zip &>>LOG_FILE
 if [ $? -eq 0 ]; then
-  echo Status = success
+  echo -e Status = "\e[32msuccess\e[0m"
 else
-  echo status = failure
+  echo -e status = "\e31mfailure\e[0m"
   exit 1
 fi
 
 echo Moving catalogue-main to catalogue
 mv catalogue-main catalogue
 if [ $? -eq 0 ]; then
-  echo Status = success
+  echo -e Status = "\e[32msuccess\e[0m"
 else
-  echo status = failure
+  echo -e status = "\e31mfailure\e[0m"
   exit 1
 fi
 cd /home/roboshop/catalogue
 
 npm install &>>LOG_FILE
 if [ $? -eq 0 ]; then
-  echo Status = success
+  echo -e Status = "\e[32msuccess\e[0m"
 else
-  echo status = failure
+  echo -e status = "\e31mfailure\e[0m"
   exit 1
 fi
 
 echo Setup Catalogue service
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 if [ $? -eq 0 ]; then
-  echo Status = success
+  echo -e Status = "\e[32msuccess\e[0m"
 else
-  echo status = failure
+  echo -e status = "\e31mfailure\e[0m"
   exit 1
 fi
 
