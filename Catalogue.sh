@@ -5,14 +5,19 @@ if [ $ID -ne 0 ]; then
   echo Please execute script in Root user or with Sudo Priviliges
   exit 1
 fi
+
+StatusCheck(){
+  if [ $1 -eq 0 ]; then
+    echo -e Status = "\e[32msuccess\e[0m"
+  else
+    echo -e status = "\e31mfailure\e[0m"
+    exit 1
+  fi
+}
+
 echo setup nodejs
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>LOG_FILE
-if [ $? -eq 0 ]; then
-  echo -e Status = "\e[32msuccess\e[0m"
-else
-  echo -e status = "\e31mfailure\e[0m"
-  exit 1
-fi
+StatusCheck $?
 
 echo Install nodejs
 yum install nodejs -y &>>LOG_FILE
