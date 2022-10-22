@@ -49,7 +49,6 @@ else
 fi
 cd /home/roboshop/catalogue
 
-echo Installing npm
 npm install &>>LOG_FILE
 if [$? -eq 0]; then
   echo Status = success
