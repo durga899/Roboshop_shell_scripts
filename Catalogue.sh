@@ -24,13 +24,18 @@ else
 fi
 
 echo Adding roboshop user
-useradd roboshop &>>LOG_FILE
-if [ $? -eq 0 ]; then
-  echo Status = success
+USERID=$(id roboshop)
+if [ USERID -eq 0 ]; then
+  echo User already exists
 else
-  echo status = failure
-  exit 1
+  useradd roboshop &>>LOG_FILE
+  if [ $? -eq 0 ]; then
+    echo Status = success
+  else
+    echo status = failure
+    exit 1
 fi
+
 
 echo Downloading catalogue application code
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>LOG_FILE
