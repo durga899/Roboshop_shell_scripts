@@ -40,7 +40,13 @@ else
   echo status = failure
 fi
 
+echo Moving catalogue-main to catalogue
 mv catalogue-main catalogue
+if [$? -eq 0]; then
+  echo Status = success
+else
+  echo status = failure
+fi
 cd /home/roboshop/catalogue
 
 echo Installing npm
