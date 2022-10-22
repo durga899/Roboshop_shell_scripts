@@ -35,12 +35,9 @@ StatusCheck $?
 
 cd /tmp
 echo Removing mongodb-main file
-cd mongodb-main &>>LOG_FILE
-if [ $? -eq 0 ]; then
-  rm -rf mongodb-main &>>LOG_FILE
-  rm -rf mongodb.zip &>>LOG_FILE
-  StatusCheck $?
-fi
+rm -rf mongodb-main &>>LOG_FILE
+StatusCheck $?
+
 
 echo Downloading mongodb schema
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"  &>>LOG_FILE
