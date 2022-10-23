@@ -28,5 +28,5 @@ echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${Robo_mysql_paswd}');
 StatusCheck $?
 
 echo Changing the default mysql root paswd
-mysql -uroot -p"${def_paswd}" < /tmp/sql_passwd_cmnds &>>LOG_FILE
+mysql -uroot -p"${def_paswd}" </tmp/sql_passwd_cmnds &>>LOG_FILE
 StatusCheck $?
