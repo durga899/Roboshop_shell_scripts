@@ -34,7 +34,7 @@ if [ $? -ne 0 ]; then
   StatusCheck $?
 fi
 
-echo "show plugins;" | mysql -uroot -p${Robo_mysql_paswd} | grep validate_password  &>>${LOG_FILE}
+echo "show plugins;" | mysql -uroot -p${Robo_mysql_paswd}  2>>/dev/null | grep validate_password  &>>${LOG_FILE}
 if [ $? -eq 0 ]; then
    echo Uinstalling validate_password plugin
    echo "uninstall plugin validate_password;" | mysql -uroot -p${Robo_mysql_paswd} &>>${LOG_FILE}
