@@ -27,7 +27,7 @@ echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${Robo_mysql_paswd}');
      FLUSH PRIVILEGES;" > /tmp/sql_passwd_cmnds
 StatusCheck $?
 
-echo "show databases;" | mysql -uroot -p'${Robo_mysql_paswd}'
+echo "show databases;" | mysql -uroot -p${Robo_mysql_paswd}  &>>$LOG_FILE
 if [ $? -ne 0 ]; then
   echo Changing the default mysql root paswd
   mysql --connect-expired-password -uroot -p"${def_paswd}" </tmp/sql_passwd_cmnds &>>$LOG_FILE
