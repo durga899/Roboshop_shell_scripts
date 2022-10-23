@@ -79,7 +79,7 @@ Nodejs(){
 
 Java(){
   echo Installing maven
-  yum install maven -y
+  yum install maven -y &>>${LOG_FILE}
   StatusCheck $?
 
   AddRoboshopUser
