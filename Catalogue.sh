@@ -1,4 +1,5 @@
-LOG_FILE=/tmp/mongodb
+component=catalogue
+LOG_FILE=/tmp/${component}
 
 ID=$(id -u)
 if [ $ID -ne 0 ]; then
