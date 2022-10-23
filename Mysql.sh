@@ -52,5 +52,5 @@ StatusCheck $?
 
 echo Load schema
 cd mysql-main
-mysql -u root -p${Robo_mysql_paswd} <shipping.sql
+mysql -u root -p${Robo_mysql_paswd} 2>>/dev/null <shipping.sql
 StatusCheck $?
