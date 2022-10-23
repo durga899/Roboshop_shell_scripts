@@ -20,5 +20,5 @@ StatusCheck $?
 
 def_paswd=$(grep 'A temporary password'  /var/log/mysqld.log | awk '{print $NF}')
 
-echo SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${Robo_mysql_paswd}');
-     FLUSH PRIVILEGES; > /tmp/sql_passwd_cmnds
+echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${Robo_mysql_paswd}');
+     FLUSH PRIVILEGES;" > /tmp/sql_passwd_cmnds
