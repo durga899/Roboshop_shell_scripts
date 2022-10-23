@@ -1,12 +1,8 @@
 LOG_FILE=/tmp/mongodb
 
-ID=$(id -u)
-if [ $ID -ne 0 ]; then
-  echo Please execute script in Root user or with Sudo Priviliges
-  exit 1
-fi
-
 source common.sh
+
+Rolecheck
 
 echo Getting Mongodb repo
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>LOG_FILE

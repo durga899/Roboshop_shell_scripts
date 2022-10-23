@@ -6,6 +6,15 @@ StatusCheck(){
     exit 1
   fi
 }
+
+Rolecheck(){
+  ID=$(id -u)
+  if [ $ID -ne 0 ]; then
+    echo Please execute script in Root user or with Sudo Priviliges
+    exit 1
+  fi
+}
+
 Nodejs(){
   echo setup Nodejs
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>LOG_FILE
@@ -51,6 +60,6 @@ Nodejs(){
   echo Setup ${component} service
   mv /home/roboshop/${component}/systemd.service /etc/systemd/system/${component}.service  &>>LOG_FILE
   systemctl daemon-reload &>>LOG_FILE
-  systemctl start ${component}
-  systemctl enable ${component}
+  systemctl start ${component} &>>LOG_FILE
+  systemctl enable ${component} &>>LOG_FILE
 }

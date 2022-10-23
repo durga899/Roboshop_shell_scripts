@@ -1,12 +1,8 @@
 LOG_FILE=/tmp/redis
 
-ID=$(id -u)
-if [ $ID -ne 0 ]; then
-  echo Please execute script in Root user or with Sudo Priviliges
-  exit 1
-fi
-
 source common.sh
+
+Rolecheck
 
 echo Getting Repos
 dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>LOG_FILE
