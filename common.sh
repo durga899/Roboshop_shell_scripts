@@ -35,6 +35,7 @@ Nodejs(){
 
   echo Extract ${component}
   unzip /tmp/${component}.zip &>>LOG_FILE
+  StatusCheck $?
 
   mv ${component}-main ${component}
   cd /home/roboshop/${component}
