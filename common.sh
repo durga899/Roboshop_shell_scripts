@@ -37,7 +37,7 @@ Nodejs(){
   unzip /tmp/${component}.zip &>>LOG_FILE
 
   mv ${component}-main ${component}
-  cd /home/roboshop/user
+  cd /home/roboshop/${component}
 
   echo Installing npm
   npm install &>>LOG_FILE
