@@ -25,7 +25,7 @@ Nodejs(){
   fi
 
   echo Downloading ${component} application code
-  curl -s -L -o /tmp/${component}.zip "https://github.com/roboshop-devops-project/user/archive/main.zip"  &>>LOG_FILE
+  curl -s -L -o /tmp/${component}.zip "https://github.com/roboshop-devops-project/${component}/archive/main.zip"  &>>LOG_FILE
   StatusCheck $?
 
   cd /home/roboshop
