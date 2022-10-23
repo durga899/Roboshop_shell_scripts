@@ -33,3 +33,10 @@ if [ $? -ne 0 ]; then
   mysql --connect-expired-password -uroot -p"${def_paswd}" </tmp/sql_passwd_cmnds &>>${LOG_FILE}
   StatusCheck $?
 fi
+
+echo "show plugins;" | mysql -uroot -p${Robo_mysql_paswd} | grep validate_password  &>>${LOG_FILE}
+if [ $? -eq 0 ]; then
+   echo Uinstalling validate_password plugin
+   echo "uninstall plugin validate_password;" | mysql -uroot -p${Robo_mysql_paswd} &>>${LOG_FILE}
+   StatusCheck $?
+fi
