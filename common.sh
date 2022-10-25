@@ -46,7 +46,7 @@ AddRoboshopUser(){
 
 SystemD_Setup(){
     echo Updating systemD service file
-    sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/'  -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' /home/roboshop/${component}/systemd.service
+    sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/'  -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/'   -e 's/USERHOST/user.roboshop.internal/'  -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/${component}/systemd.service
     StatusCheck $?
 
     echo Setup ${component} service
@@ -105,4 +105,13 @@ Python(){
    echo Installing python dependencies
    pip3 install -r requirements.txt &>>${LOG_FILE}
    StatusCheck $?
+
+   APP_UID=$(id -u roboshop)
+   APP_GID=$(id -g roboshop)
+
+   echo Changing uid and gid
+   sed -i -e "/uid/ c uid = ${APP_UID}" -e "/gid/ c gid = ${APP_GID}" /home/roboshop/${component}/${component}.ini &>>${LOG_FILE}
+   StatusCheck $?
+
+   SystemD_Setup
 }
