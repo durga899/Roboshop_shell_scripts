@@ -1,6 +1,11 @@
 LOG_FILE=/tmp/mysql
 source common.sh
 
+if [ -z "${Robo_mysql_paswd}" ]; then
+  echo -e "\e[31m Declare Robo_mysql_paswd variable\e[0m "
+  exit 1
+fi
+
 echo Getting Mysql rep
 curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo &>>${LOG_FILE}
 StatusCheck $?
