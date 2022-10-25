@@ -1,5 +1,5 @@
-COMPONENT=dispatch
-LOG_FILE=/tmp/${COMPONENT}
+component=dispatch
+LOG_FILE=/tmp/${component}
 
 source common.sh
 
